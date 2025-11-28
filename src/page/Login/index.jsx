@@ -5,7 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 export default function Login() {
     const [form, setForm] = useState(null);
     const { loginUser } = useContext(AuthContext);
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
         try {
             await loginUser(form);
         } catch (error) {
@@ -14,7 +15,7 @@ export default function Login() {
     };
     return (
         <Fragment>
-            <div className="flex flex-col gap-4 shadow-2xl p-6 items-center rounded-lg">
+            <form className="flex flex-col gap-4 shadow-2xl p-6 items-center rounded-lg" onSubmit={handleLogin}>
                 <span className="font-bold text-3xl">Login</span>
                 <div className="space-y-4 w-full">
                     <div className="flex flex-col gap-3 text-sm">
@@ -24,6 +25,7 @@ export default function Login() {
                             type="email"
                             placeholder="name@example.com"
                             className="border border-gray-200 rounded-xl px-4 py-2 outline-none"
+                            required
                         />
                     </div>
                     <div className="flex flex-col gap-3 text-sm">
@@ -33,6 +35,7 @@ export default function Login() {
                             type="password"
                             placeholder="Enter your password"
                             className="border border-gray-200 rounded-xl px-4 py-2 outline-none"
+                            required
                         />
                     </div>
                     <div className="text-[13px] text-center ">
@@ -42,10 +45,10 @@ export default function Login() {
                         </Link>
                     </div>
                 </div>
-                <button onClick={handleLogin} className="bg-blue-600 rounded-lg w-full p-2 text-white font-bold">
+                <button className="bg-blue-600 rounded-lg w-full p-2 text-white font-bold">
                     Sign Up
                 </button>
-            </div>
+            </form>
         </Fragment>
     );
 }
