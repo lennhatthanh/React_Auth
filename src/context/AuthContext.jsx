@@ -39,7 +39,6 @@ export default function AuthContextProvider({ children }) {
     const signUpUser = async (payload) => {
         try {
             const res = await signup(payload);
-            setUserInfo(res.data);
             toast.success("Register successful");
             navigate("/login");
         } catch (error) {
