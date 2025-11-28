@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LayoutBlank from "./layout/blank";
-import Login from "./page/login";
-import SignUp from "./page/SignUp";
 import AuthContextProvider from "./context/AuthContext";
 import Home from "./page/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
 import Layout from "./layout";
+import Login from "./page/Login";
+import SignUp from "./page/SignUp";
 
 function App() {
     return (
